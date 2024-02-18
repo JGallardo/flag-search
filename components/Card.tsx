@@ -8,12 +8,21 @@ interface Props {
   alt: string;
   name: string;
   region: string;
+  subregion: string;
   population: number;
   flag: string;
   capital: string;
 }
 
-const Card = ({alt, name, region, population, flag, capital }: Props) => {
+const Card = ({
+  alt,
+  name,
+  region,
+  subregion,
+  population,
+  flag,
+  capital
+}: Props) => {
   return (
     <MuiCard
       sx={{
@@ -43,6 +52,9 @@ const Card = ({alt, name, region, population, flag, capital }: Props) => {
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <b>Region:</b> {region}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <b>Subregion:</b> {subregion}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <b>Capital:</b> {capital}
