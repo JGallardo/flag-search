@@ -8,7 +8,10 @@ const CountrySearch = () => {
   const [region, setRegion] = React.useState('');
   const [data, setData] = useState([
     {
-      name: {common: ""},
+      name: {
+        common: "",
+        official: "",
+      },
       flags: {
         alt: "",
         png: "",
@@ -128,6 +131,7 @@ const CountrySearch = () => {
             <Card
               alt={country.flags.alt}
               name={country.name.common}
+              nameOfficial={country.name.official}
               flag={country.flags.png}
               population={country.population}
               region={country.region}
