@@ -1,17 +1,27 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { useStore } from "../store";
 
 const CountrySearch = () => {
 
   const [age, setAge] = React.useState('');
+  const [data, setData] = useState({});
   const mockData = ["Germany", "United States of America", "Brazil", "Jamaica"];
   const isDarkMode = useStore((state) => state.isDarkMode);
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
   };
+
+  // This is where we get the data from the API
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }, []);
+
+  console.log(data);
   
   return (
     <Box sx={{ padding: "2rem"}}>
