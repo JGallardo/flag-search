@@ -133,6 +133,7 @@ const CountrySearch = () => {
               name={country.name.common}
               nameOfficial={country.name.official}
               flag={country.flags.png}
+              flagSvg={country.flags.svg}
               population={country.population}
               region={country.region}
               subregion={country.subregion}
