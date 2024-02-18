@@ -3,6 +3,7 @@ export type Country = {
   name: { common: string };
   nameOfficial: { official: string };
   flag: { png: string};
+  flagSvg: { svg: string};
   population: number;
   region: string;
   subregion: string;
