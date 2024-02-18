@@ -124,7 +124,7 @@ const CountrySearch = () => {
             label="Filter by Region"
             onChange={handleChange}
           >
-            <MenuItem value="All">All</MenuItem>
+            <MenuItem value="">All</MenuItem>
             <MenuItem value="Africa">Africa</MenuItem>
             <MenuItem value="Americas">Americas</MenuItem>
             <MenuItem value="Asia">Asia</MenuItem>
