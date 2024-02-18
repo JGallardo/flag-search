@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 interface Props {
   alt: string;
   name: string;
+  nameOfficial: string;
   region: string;
   subregion: string;
   population: number;
@@ -17,6 +18,7 @@ interface Props {
 const Card = ({
   alt,
   name,
+  nameOfficial,
   region,
   subregion,
   population,
@@ -48,6 +50,12 @@ const Card = ({
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
+          {nameOfficial}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <b>Capital:</b> {capital}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
           <b>Population:</b> {population}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -55,9 +63,6 @@ const Card = ({
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <b>Subregion:</b> {subregion}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          <b>Capital:</b> {capital}
         </Typography>
       </CardContent>
     </MuiCard>
