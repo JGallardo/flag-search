@@ -122,7 +122,7 @@ const CountrySearch = () => {
       <Box
         sx={{ 
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           flexWrap: "wrap",
         }}
       >

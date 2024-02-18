@@ -34,12 +34,12 @@ const Card = ({
   return (
     <MuiCard
       sx={{
-        width: "20vw",
-        marginBottom: "2rem"
+        width: "320px",
+        margin: "0 1rem 2rem"
       }}
     >
       <CardMedia
-        sx={{ height: "15vh" }}
+        sx={{ height: "160px" }}
         image={flag}
         title={alt}
       />
@@ -55,49 +55,6 @@ const Card = ({
         >
           {name}
         </Typography>
-        <ButtonGroup
-          size="small"
-          aria-label="Download the flag image"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "0.5rem 0",
-            width: "100%",
-          }}
-        >
-          <Button key="png">
-            <a
-              href={flag}
-              download={flag.replace(/^.*[\\/]/, '')}
-              target="_blank"
-              style={{
-                display: "flex",
-                justifyContent: "center"
-              }}
-            >
-              <span>{flag.replace(/^.*[\\/]/, '')}</span>
-              <span style={{ marginLeft: "0.25rem" }}>
-                <DownloadIcon/>
-              </span>
-            </a>
-          </Button>
-          <Button key="png">
-            <a
-              href={flagSvg}
-              download={flagSvg.replace(/^.*[\\/]/, '')}
-              target="_blank"
-              style={{
-                display: "flex",
-                justifyContent: "center"
-              }}
-            >
-              <span>{flagSvg.replace(/^.*[\\/]/, '')}</span>
-              <span style={{ marginLeft: "0.25rem" }}>
-                <DownloadIcon/>
-              </span>
-            </a>
-          </Button>
-        </ButtonGroup>
         <Typography variant="body2" color="text.secondary">
           {nameOfficial}
         </Typography>
@@ -113,6 +70,51 @@ const Card = ({
         <Typography variant="body2" color="text.secondary">
           <b>Subregion:</b> {subregion}
         </Typography>
+        <ButtonGroup
+          size="small"
+          aria-label="Download the flag image"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "1rem auto 0",
+            width: "100%",
+          }}
+        >
+          <Button key="png">
+            <a
+              href={flag}
+              download={flag.replace(/^.*[\\/]/, '')}
+              rel="noreferrer"
+              style={{
+                display: "flex",
+                justifyContent: "center"
+              }}
+              target="_blank"
+            >
+              <span>{flag.replace(/^.*[\\/]/, '')}</span>
+              <span style={{ marginLeft: "0.25rem" }}>
+                <DownloadIcon/>
+              </span>
+            </a>
+          </Button>
+          <Button key="png">
+            <a
+              href={flagSvg}
+              download={flagSvg.replace(/^.*[\\/]/, '')}
+              rel="noreferrer"
+              style={{
+                display: "flex",
+                justifyContent: "center"
+              }}
+              target="_blank"
+            >
+              <span>{flagSvg.replace(/^.*[\\/]/, '')}</span>
+              <span style={{ marginLeft: "0.25rem" }}>
+                <DownloadIcon/>
+              </span>
+            </a>
+          </Button>
+        </ButtonGroup>
       </CardContent>
     </MuiCard>
   )
