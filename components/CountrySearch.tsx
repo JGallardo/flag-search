@@ -33,21 +33,6 @@ const CountrySearch = () => {
     setSearchValue(e.target.value)
   };
 
-  const filterCountries = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-
-    if (e.target.value === "") {
-      setFilteredCountries(data);
-    } else {
-      setFilteredCountries(
-        filteredCountries.filter((country) =>
-          country.name.common.toLowerCase().includes(e.target.value.toLowerCase())
-        )
-      );
-    }
-  };
-
   useMemo(() => {
     let countries = []
 
@@ -66,7 +51,7 @@ const CountrySearch = () => {
     } else if (region === "") {
       if (searchValue !== "") {
         setFilteredCountries(
-          filteredCountries.filter((country) =>
+          data.filter((country) =>
             country.name.common.toLowerCase().includes(searchValue.toLowerCase())
           )
         );
@@ -85,8 +70,6 @@ const CountrySearch = () => {
         setFilteredCountries(data);
       });
   }, []);
-
-  console.log(data);
   
   return (
     <Box sx={{ padding: "2rem"}}>
@@ -106,7 +89,6 @@ const CountrySearch = () => {
             backgroundColor: isDarkMode ? "#2b3743" : "#ffffff"
           }}
           onChange={(e) => {
-            filterCountries(e);
             handleTyping(e);
           }
           }
