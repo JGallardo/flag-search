@@ -1,24 +1,51 @@
+import React from "react";
 import MuiCard from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import React from "react";
 
-const Card = () => {
+interface Props {
+  alt: string;
+  name: string;
+  region: string;
+  population: number;
+  flag: string;
+  capital: string;
+}
+
+const Card = ({alt, name, region, population, flag, capital }: Props) => {
   return (
-    <MuiCard sx={{ width: "20vw" }}>
+    <MuiCard
+      sx={{
+        width: "20vw",
+        marginBottom: "2rem"
+      }}
+    >
       <CardMedia
         sx={{ height: "10vh" }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        image={flag}
+        title={alt}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            fontSize: "1rem",
+            fontWeight: 700
+          }}
+        >
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          <b>Population:</b> {population}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <b>Region:</b> {region}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <b>Capital:</b> {capital}
         </Typography>
       </CardContent>
     </MuiCard>

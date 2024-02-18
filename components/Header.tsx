@@ -9,25 +9,21 @@ const Header = () => {
 
   return (
     <Box
-      sx={
-        {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "1rem 2rem",
-          backgroundColor: isDarkMode ? "#2b3743" : "#ffffff",
-          boxShadow: "0px 2px 2px lightgrey",
-        }
-      }
+      sx={{
+        backgroundColor: isDarkMode ? "#2b3743" : "#ffffff",
+        boxShadow: "0px 2px 2px lightgrey",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "1rem 2rem",
+      }}
     >
       <Typography
         variant="h1"
-        sx={
-          { 
-            fontSize: "1.5rem",
-            fontWeight: "700",
-          }
-        }
+        sx={{ 
+          fontSize: "1.5rem",
+          fontWeight: "700",
+        }}
       >
         Where in the world?
       </Typography>

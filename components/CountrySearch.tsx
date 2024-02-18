@@ -6,8 +6,20 @@ import { useStore } from "../store";
 const CountrySearch = () => {
 
   const [age, setAge] = React.useState('');
-  const [data, setData] = useState({});
-  const mockData = ["Germany", "United States of America", "Brazil", "Jamaica"];
+  const [data, setData] = useState([
+    {
+      name: {common: ""},
+      flags: {
+        alt: "",
+        png: "",
+        svg: "" 
+      },
+      capital: [""],
+      population: 0,
+      region: "",
+    }
+  ]);
+
   const isDarkMode = useStore((state) => state.isDarkMode);
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -26,24 +38,20 @@ const CountrySearch = () => {
   return (
     <Box sx={{ padding: "2rem"}}>
       <Box
-        sx={
-          {
-            display: "flex",
-            justifyContent: "space-between",
-            marginBottom: "2rem",
-          }
-        }
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "2rem",
+        }}
       >
         <TextField
           id="outlined-basic"
           label="Search for a country..."
           variant="outlined"
-          sx={
-            {
-              width: "40vw",
-              backgroundColor: isDarkMode ? "#2b3743" : "#ffffff"
-            }
-          }
+          sx={{
+            width: "40vw",
+            backgroundColor: isDarkMode ? "#2b3743" : "#ffffff"
+          }}
         />
         <FormControl
           sx={{ 
@@ -58,21 +66,34 @@ const CountrySearch = () => {
             label="Filter by Region"
             onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-
             <MenuItem value="All">All</MenuItem>
             <MenuItem value="Africa">Africa</MenuItem>
             <MenuItem value="Americas">Americas</MenuItem>
             <MenuItem value="Asia">Asia</MenuItem>
             <MenuItem value="Europe">Europe</MenuItem>
             <MenuItem value="Oceania">Oceania</MenuItem>
-            
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        {mockData.map((country) => {
-          return <Card key={country}/>;
+      <Box
+        sx={{ 
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+        }}
+      >
+        {data.map((country) => {
+          return (
+            <Card
+              alt={country.flags.alt}
+              name={country.name.common}
+              flag={country.flags.png}
+              population={country.population}
+              region={country.region}
+              capital={country.capital[0]}
+              key={country.name.common}
+            />
+          );
         })}
       </Box>
     </Box>
