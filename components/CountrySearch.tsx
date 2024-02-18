@@ -17,6 +17,7 @@ const CountrySearch = () => {
       capital: [""],
       population: 0,
       region: "",
+      subregion: "",
     }
   ]);
 
@@ -63,7 +64,7 @@ const CountrySearch = () => {
 
   // This is where we get the data from the API
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region")
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -130,6 +131,7 @@ const CountrySearch = () => {
               flag={country.flags.png}
               population={country.population}
               region={country.region}
+              subregion={country.subregion}
               capital={country.capital[0]}
               key={country.name.common}
             />

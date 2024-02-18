@@ -4,5 +4,6 @@ export type Country = {
   flag: { png: string};
   population: number;
   region: string;
+  subregion: string;
   capital: string[];
 }
