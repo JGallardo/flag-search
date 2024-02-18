@@ -20,17 +20,36 @@ const CountrySearch = () => {
     }
   ]);
 
+  const [filteredCountries, setFilteredCountries] = useState(data);
   const isDarkMode = useStore((state) => state.isDarkMode);
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
   };
 
+  const filterCountries = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+
+    if (e.target.value === "") {
+      setFilteredCountries(data);
+    } else {
+      setFilteredCountries(
+        filteredCountries.filter((country) =>
+          country.name.common.toLowerCase().includes(e.target.value.toLowerCase())
+        )
+      );
+    }
+  };
+
   // This is where we get the data from the API
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setData(data);
+        setFilteredCountries(data);
+      });
   }, []);
 
   console.log(data);
@@ -52,6 +71,7 @@ const CountrySearch = () => {
             width: "40vw",
             backgroundColor: isDarkMode ? "#2b3743" : "#ffffff"
           }}
+          onChange={(e) => filterCountries(e)}
         />
         <FormControl
           sx={{ 
@@ -82,7 +102,7 @@ const CountrySearch = () => {
           flexWrap: "wrap",
         }}
       >
-        {data.map((country) => {
+        {filteredCountries.map((country) => {
           return (
             <Card
               alt={country.flags.alt}
