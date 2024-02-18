@@ -15,8 +15,8 @@ const Home: NextPage = () => {
       }}
     >
       <Head>
-        <title>Country Search</title>
-        <meta name="description" content="Country search app that displays their flag" />
+        <title>Country Flag Search</title>
+        <meta name="description" content="Country flag search and basic information." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CountrySearchContainer />

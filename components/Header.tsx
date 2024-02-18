@@ -25,7 +25,7 @@ const Header = () => {
           fontWeight: "700",
         }}
       >
-        Where in the world?
+        Country Lookup
       </Typography>
       <Button onClick={toggleDarkMode}>
         <NightlightRoundIcon />

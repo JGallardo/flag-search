@@ -22,7 +22,7 @@ const Card = ({alt, name, region, population, flag, capital }: Props) => {
       }}
     >
       <CardMedia
-        sx={{ height: "10vh" }}
+        sx={{ height: "15vh" }}
         image={flag}
         title={alt}
       />
