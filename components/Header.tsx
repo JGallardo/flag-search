@@ -25,7 +25,7 @@ const Header = () => {
           fontWeight: "700",
         }}
       >
-        Country Lookup
+        Country Flag Search
       </Typography>
       <Button onClick={toggleDarkMode}>
         <NightlightRoundIcon />
