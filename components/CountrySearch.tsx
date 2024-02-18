@@ -16,7 +16,7 @@ const CountrySearch = () => {
 
   // This is where we get the data from the API
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
