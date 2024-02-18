@@ -1,11 +1,11 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Card from "./Card";
 import { useStore } from "../store";
 
 const CountrySearch = () => {
 
-  const [age, setAge] = React.useState('');
+  const [region, setRegion] = React.useState('');
   const [data, setData] = useState([
     {
       name: {common: ""},
@@ -21,10 +21,16 @@ const CountrySearch = () => {
   ]);
 
   const [filteredCountries, setFilteredCountries] = useState(data);
+  const [searchValue, setSearchValue] = useState("");
+
   const isDarkMode = useStore((state) => state.isDarkMode);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setRegion(event.target.value);
+  };
+
+  const handleTyping = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setSearchValue(e.target.value)
   };
 
   const filterCountries = (
@@ -41,6 +47,34 @@ const CountrySearch = () => {
       );
     }
   };
+
+  useMemo(() => {
+    let countries = []
+
+    if (region !== "") {
+      countries = data.filter((country) => country.region === region);
+
+      if (searchValue !== "") {
+        setFilteredCountries(
+          countries.filter((country) =>
+            country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+          )
+        );
+      } else {
+        setFilteredCountries(countries);
+      }
+    } else if (region === "") {
+      if (searchValue !== "") {
+        setFilteredCountries(
+          filteredCountries.filter((country) =>
+            country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+          )
+        );
+      } else {
+        setFilteredCountries(data);
+      }
+    }
+  }, [data, region, searchValue]);
 
   // This is where we get the data from the API
   useEffect(() => {
@@ -71,7 +105,11 @@ const CountrySearch = () => {
             width: "40vw",
             backgroundColor: isDarkMode ? "#2b3743" : "#ffffff"
           }}
-          onChange={(e) => filterCountries(e)}
+          onChange={(e) => {
+            filterCountries(e);
+            handleTyping(e);
+          }
+          }
         />
         <FormControl
           sx={{ 
@@ -82,7 +120,7 @@ const CountrySearch = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={age}
+            value={region}
             label="Filter by Region"
             onChange={handleChange}
           >
